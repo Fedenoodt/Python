@@ -1,0 +1,1 @@
+cargaRazas = 'INSERT INTO RAZAS(NOMBRE, HUMANOIDE) VALUES("{}",("{}");'

@@ -1,0 +1,4 @@
+"simple faz",0.45
+"doble faz",0.85
+"ampliación",1.5
+"color",2.5
