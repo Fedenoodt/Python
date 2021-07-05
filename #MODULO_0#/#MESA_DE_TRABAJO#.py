@@ -14,7 +14,7 @@
 
 #=////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////=#
 
-inmuebles = open("/home/fedenoodt/Documentos/BHSIAI/Protocolo 6/GitHub/BAPIOIX/anio1/Primer_Cuatrimestre/BAPIOIX-Introduccion_Programacion/Actividades/Ejercicio_inmuebles/inmuebles.csv", "r")
+inmuebles = open("C:/Users/eduno/OneDrive/Documents/Fede/BAPIOIX-Introduccion_Programacion/Actividades/Ejercicio_inmuebles/inmuebles.csv", "r")
 
         #=# 1 #=# #~~~~~~~~~~~~~//Lista de Vendedores\\~~~~~~~~~~~~~#
 
@@ -22,6 +22,7 @@ inmuebles = open("/home/fedenoodt/Documentos/BHSIAI/Protocolo 6/GitHub/BAPIOIX/a
 
 listado = {}
 titulos = []
+listaNativa = []
 data = []
 
         #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -57,17 +58,17 @@ def crearDiccionario():
         listado[titulos[t]] = []
     return listado
 
-def informacion(data):
+def informacion(listaNativa):
     detalle = ''
     for linea in inmuebles:
-        operacionador(linea, detalle, data)
+        operacionador(linea, detalle, listaNativa)
         
     return data
 
-def versionador(data, lista, posicion):
-    for d in range(0, len(data)):
-        if data[d] != '':
-            lista.append(data[posicion])
+def versionador(listaNativa):
+    for d in range(9, len(listaNativa)):
+        print(listaNativa[d])
+        return listaNativa
 
         #####RESOLVER######ACA##########
         # Hace falta completar esta funcion, que va a insertar en cada lista, la informacion.
@@ -77,7 +78,7 @@ def versionador(data, lista, posicion):
 def main(data):
     listado = crearDiccionario()
     linea = inmuebles.readline()
-    data = informacion(data)
+    listaNativa = informacion(listaNativa)
             
 
     print(listado)
@@ -85,8 +86,13 @@ def main(data):
         #~~~~~~~~~~~~~//Cuerpo\\~~~~~~~~~~~~~#
 
 
-# main(data)
+# main(listaNativa)
 
-a = informacion(data)
-print(a)
+listaNativa = informacion(listaNativa)
+
+print(listaNativa[9])
+for d in range(9, len(listaNativa)):
+    data.append(listaNativa[d])
+
+print(data)
         #####RESOLVER######ACA##########
