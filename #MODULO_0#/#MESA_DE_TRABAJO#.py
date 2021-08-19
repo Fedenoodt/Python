@@ -58,8 +58,10 @@ lblPeso = tkr.Label(mainroot, text = "Ingrese el peso de su animal:")
 txtPeso = tkr.Entry(mainroot)
 lblMascota = tkr.Label(mainroot, text = "Marqué que animal es su mascota.")
     #----# Botones
-btnPerro = tkr.Checkbutton(mainroot, text = "Perro")
-btnGato = tkr.Checkbutton(mainroot, text = "Gato")
+btnPerro = tkr.IntVar()
+btnGato = tkr.IntVar()
+chkPerro = tkr.Checkbutton(mainroot, text = "Perro", variable = btnPerro)
+chkGato = tkr.Checkbutton(mainroot, text = "Gato", variable = btnGato)
 btnGeneral = tkr.Button(mainroot, text = "Calcular", command = calcular)
 btnSalir= tkr.Button(mainroot, text = "Salir", command = salir)
 
@@ -71,8 +73,8 @@ lblPeso.grid(row = 1, column = 0, padx = 10, pady = 5)
 txtPeso.grid(row = 1, column = 1, padx = 10, pady = 5)
 lblMascota.grid(row = 3, column = 0, padx = 10, pady = 5)
     #----# Botones
-btnPerro.grid(row = 2, column = 0, padx = 10, pady = 5)
-btnGato.grid(row = 2, column = 1, padx = 10, pady = 5)
+chkPerro.grid(row = 2, column = 0, padx = 10, pady = 5)
+chkGato.grid(row = 2, column = 1, padx = 10, pady = 5)
 btnGeneral.grid(row = 3, column = 0, sticky = "WE", padx = 10, pady = 5)
 btnSalir.grid(row = 3, column = 1, sticky = "WE", padx = 10, pady = 5)
 
