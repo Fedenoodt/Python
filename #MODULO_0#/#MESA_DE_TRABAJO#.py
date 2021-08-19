@@ -4,89 +4,78 @@
 
 #~~#TAREA ACTUAL:#~~#
 
+#=////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////=#
 
+#~~#Separadores#~~#
 #=////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////=#
         #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+        #####RESOLVER######ACA##########
+
+#~~#Titulos#~~#
         #///////////////\\\\\\\\\\\\\\\#
+
+#~~#Subtitulos#~~#
         #~~~~~~~~~~~~~//\\~~~~~~~~~~~~~#
         #=#  #=# #~~~~~~~~~~~~~//\\~~~~~~~~~~~~~#
-        #####RESOLVER######ACA##########
+
+#~~#Asuntos puntuales#~~#
+    #----# Texto
 
 #=////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////==////=#
 
-inmuebles = open("/home/fedenoodt/Documentos/BHSIAI/Protocolo 6/GitHub/BAPIOIX/anio1/Primer_Cuatrimestre/BAPIOIX-Introduccion_Programacion/Actividades/Ejercicio_inmuebles/inmuebles.csv", "r")
+        #///////////////Ejercicio 6\\\\\\\\\\\\\\\#
 
-        #=# 1 #=# #~~~~~~~~~~~~~//Lista de Vendedores\\~~~~~~~~~~~~~#
+        #~~~~~~~~~~~~~//Llamadas\\~~~~~~~~~~~~~#
 
-        #~~~~~~~~~~~~~//Definiciones\\~~~~~~~~~~~~~#
+import tkinter as tkr
+from tkinter import messagebox
 
-listado = {}
-titulos = []
-data = []
-
-        #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-referencia = []
-fecha_alta = []
-tipo = []
-operacion = []
-provincia = []
-superficie = []
-precio_venta = []
-fecha_venta = []
-vendedor = []
+mainroot = tkr.Tk()
 
         #~~~~~~~~~~~~~//Funciones\\~~~~~~~~~~~~~#
 
-def operacionador(linea, valor, almacenaje):
-    for l in linea:
-        if l == ';' or l == '\n' or l == '"' or l == '':
-            if valor != '':    
-                almacenaje.append(valor)
-            valor = ''
-        else:
-            valor += l
-
-def primeraLinea(titulos):
-    titulo = ''
-    lineaUno = inmuebles.readline()
-    operacionador(lineaUno, titulo, titulos)
-    
-def crearDiccionario():
-    primeraLinea(titulos)
-    for t in range(len(titulos)):
-        listado[titulos[t]] = []
-    return listado
-
-def informacion(data):
-    detalle = ''
-    for linea in inmuebles:
-        operacionador(linea, detalle, data)
-        
-    return data
-
-def versionador(data, lista, posicion):
-    for d in range(0, len(data)):
-        if data[d] != '':
-            lista.append(data[posicion])
-
-        #####RESOLVER######ACA##########
-        # Hace falta completar esta funcion, que va a insertar en cada lista, la informacion.
-
-        #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-
-def main(data):
-    listado = crearDiccionario()
-    linea = inmuebles.readline()
-    data = informacion(data)
-            
-
-    print(listado)
-            
-        #~~~~~~~~~~~~~//Cuerpo\\~~~~~~~~~~~~~#
+def calcular():
+    if btnPerro.get():
+        print('Perro')
+    elif btnGato.get():
+        print('gato')
 
 
-# main(data)
+def salir():
+    opcion = messagebox.askokcancel('¡Atención!', '¿Confirma que desea salir?')
+    if opcion:
+        exit()
 
-a = informacion(data)
-print(a)
-        #####RESOLVER######ACA##########
+        #~~~~~~~~~~~~~//Encabezado\\~~~~~~~~~~~~~#
+
+title = mainroot.title("Alimentador de mascotas fiable")
+intro = tkr.Label(mainroot, text = "Este es un instrumento para medir el alimento de su perro o gato.")
+
+        #~~~~~~~~~~~~~//Zona de ingresos\\~~~~~~~~~~~~~#
+
+    #----# Textos y entradas
+lblPeso = tkr.Label(mainroot, text = "Ingrese el peso de su animal:")
+txtPeso = tkr.Entry(mainroot)
+lblMascota = tkr.Label(mainroot, text = "Marqué que animal es su mascota.")
+    #----# Botones
+btnPerro = tkr.Checkbutton(mainroot, text = "Perro")
+btnGato = tkr.Checkbutton(mainroot, text = "Gato")
+btnGeneral = tkr.Button(mainroot, text = "Calcular", command = calcular)
+btnSalir= tkr.Button(mainroot, text = "Salir", command = salir)
+
+        #~~~~~~~~~~~~~//Declaración de posiciones\\~~~~~~~~~~~~~#
+
+    #----# Textos y entradas
+intro.grid(row = 0, column = 0, padx = 10, pady = 5)
+lblPeso.grid(row = 1, column = 0, padx = 10, pady = 5)
+txtPeso.grid(row = 1, column = 1, padx = 10, pady = 5)
+lblMascota.grid(row = 3, column = 0, padx = 10, pady = 5)
+    #----# Botones
+btnPerro.grid(row = 2, column = 0, padx = 10, pady = 5)
+btnGato.grid(row = 2, column = 1, padx = 10, pady = 5)
+btnGeneral.grid(row = 3, column = 0, sticky = "WE", padx = 10, pady = 5)
+btnSalir.grid(row = 3, column = 1, sticky = "WE", padx = 10, pady = 5)
+
+        #~~~~~~~~~~~~~//Cierre del bucle\\~~~~~~~~~~~~~#
+
+mainroot.mainloop()
