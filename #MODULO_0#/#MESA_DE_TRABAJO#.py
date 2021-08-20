@@ -35,10 +35,11 @@ mainroot = tkr.Tk()
         #~~~~~~~~~~~~~//Funciones\\~~~~~~~~~~~~~#
 
 def calcular():
+    resultado = valor.get()
     if btnPerro.get():
-        print('Perro')
+        resultado += 'Perro'
     elif btnGato.get():
-        print('gato')
+        resultado += 'Gato'
 
 
 def salir():
@@ -65,6 +66,10 @@ chkGato = tkr.Checkbutton(mainroot, text = "Gato", variable = btnGato)
 btnGeneral = tkr.Button(mainroot, text = "Calcular", command = calcular)
 btnSalir= tkr.Button(mainroot, text = "Salir", command = salir)
 
+        #~~~~~~~~~~~~~//Resultado\\~~~~~~~~~~~~~#
+
+valor = tkr.Label(mainroot, text = "")
+
         #~~~~~~~~~~~~~//Declaración de posiciones\\~~~~~~~~~~~~~#
 
     #----# Textos y entradas
@@ -77,6 +82,8 @@ chkPerro.grid(row = 2, column = 0, padx = 10, pady = 5)
 chkGato.grid(row = 2, column = 1, padx = 10, pady = 5)
 btnGeneral.grid(row = 3, column = 0, sticky = "WE", padx = 10, pady = 5)
 btnSalir.grid(row = 3, column = 1, sticky = "WE", padx = 10, pady = 5)
+    #----# Resultados
+valor.grid(row = 4, column = 0, sticky = "WE", padx = 10, pady = 5)
 
         #~~~~~~~~~~~~~//Cierre del bucle\\~~~~~~~~~~~~~#
 
