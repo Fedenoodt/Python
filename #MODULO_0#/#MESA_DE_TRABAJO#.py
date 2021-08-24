@@ -84,7 +84,7 @@ chkGato.grid(row = 2, column = 1, padx = 10, pady = 5)
 btnGeneral.grid(row = 3, column = 0, sticky = "WE", padx = 10, pady = 5)
 btnSalir.grid(row = 3, column = 1, sticky = "WE", padx = 10, pady = 5)
     #----# Resultados
-valor.grid(row = 4, column = 0, sticky = "WE", padx = 10, pady = 5)
+var.grid(row = 4, column = 0, sticky = "WE", padx = 10, pady = 5)
 
         #~~~~~~~~~~~~~//Cierre del bucle\\~~~~~~~~~~~~~#
 
