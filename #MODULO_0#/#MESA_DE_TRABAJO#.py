@@ -25,59 +25,98 @@
 
         #///////////////Ejercicio 6\\\\\\\\\\\\\\\#
 
-        #~~~~~~~~~~~~~//Llamadas\\~~~~~~~~~~~~~#
-
-import tkinter as tkr
-from tkinter import messagebox
-
-mainroot = tkr.Tk()
-
         #~~~~~~~~~~~~~//Funciones\\~~~~~~~~~~~~~#
 
-def calcular():
-    if btnPerro.get():
-        print('Perro')
-    elif btnGato.get():
-        print('gato')
+turnosA = open("turnosA.txt", "a")
+turnosB = open("turnosB.txt", "a")
+turnosC = open("turnosC.txt", "a")
 
+def versionador():
+    ruta = tramite.get()
+    a = 'A'
+    b = 'B'
+    c = 'C'
+    contadorA = 0
+    contadorB = 0
+    contadorC = 0
+    
+    if str(ruta) == "reclamo":
+        if contadorA >= 100:
+            contadorA = -1
+        contadorA += 1
+        turnoA = a + '-' + str(contadorA)
+        turnosA.writelines(turnoA + ";" + str(dni))
+    elif str(ruta) == "altaBaja":
+        if contadorB >= 100:
+            contadorB = -1
+        contadorB += 1
+        turnoB = b + '-' + str(contadorB)
+        turnosB.writelines(turnoB + ";" + str(dni))
+    elif str(ruta) == "consulta":
+        if contadorC >= 100:
+            contadorC = -1
+        contadorC += 1
+        turnoC = c + '-' + str(contadorC)
+        turnosC.writelines(turnoC + ";" + str(dni))
 
+def muestra():
+    ruta = tramite.get()
+    if str(ruta) == "reclamo":
+        pass
+    elif str(ruta) == "altaBaja":
+        pass
+    elif str(ruta) == "consulta":
+        pass
 def salir():
     opcion = messagebox.askokcancel('¡Atención!', '¿Confirma que desea salir?')
     if opcion:
         exit()
 
+        #~~~~~~~~~~~~~//Llamadas\\~~~~~~~~~~~~~#
+
+import tkinter as tkr
+from tkinter import IntVar, StringVar, messagebox
+
+mainroot = tkr.Tk()
+
         #~~~~~~~~~~~~~//Encabezado\\~~~~~~~~~~~~~#
 
-title = mainroot.title("Alimentador de mascotas fiable")
-intro = tkr.Label(mainroot, text = "Este es un instrumento para medir el alimento de su perro o gato.")
+title = mainroot.title("Alimentador de mascotas confiable")
+intro = tkr.Label(mainroot, text = "Por favor. Ingrese el tipo de trámite para recibir un turno.")
 
         #~~~~~~~~~~~~~//Zona de ingresos\\~~~~~~~~~~~~~#
 
-    #----# Textos y entradas
-lblPeso = tkr.Label(mainroot, text = "Ingrese el peso de su animal:")
-txtPeso = tkr.Entry(mainroot)
-lblMascota = tkr.Label(mainroot, text = "Marqué que animal es su mascota.")
-    #----# Botones
-btnPerro = tkr.IntVar()
-btnGato = tkr.IntVar()
-chkPerro = tkr.Checkbutton(mainroot, text = "Perro", variable = btnPerro)
-chkGato = tkr.Checkbutton(mainroot, text = "Gato", variable = btnGato)
-btnGeneral = tkr.Button(mainroot, text = "Calcular", command = calcular)
-btnSalir= tkr.Button(mainroot, text = "Salir", command = salir)
+txtDNI = tkr.Label(mainroot, text = "DNI:")
+dni = IntVar()
+entryDNI = tkr.Entry(mainroot, variable = dni, command = versionador)
+txtTramite = tkr.Label(mainroot, text = "Trámite")
+tramite = StringVar()
+rdbtnReclamo = tkr.Radiobutton(mainroot, text = "Reclamo", variable = tramite, value = "reclamo", command = versionador)
+rdbtnAltaBaja = tkr.Radiobutton(mainroot, text = "Alta / Baja", variable = tramite, value = "altaBaja", command = versionador)
+rdbtnConsulta = tkr.Radiobutton(mainroot, text = "Consulta", variable = tramite, value = "consulta", command = versionador)
+btnConfirma = tkr.Button(mainroot, text = "Confirmar", command = muestra)
+btnSalir = tkr.Button(mainroot, text = "Salir", command = salir)
+
+
+        #~~~~~~~~~~~~~//Resultado\\~~~~~~~~~~~~~#
+
+
 
         #~~~~~~~~~~~~~//Declaración de posiciones\\~~~~~~~~~~~~~#
 
-    #----# Textos y entradas
-intro.grid(row = 0, column = 0, padx = 10, pady = 5)
-lblPeso.grid(row = 1, column = 0, padx = 10, pady = 5)
-txtPeso.grid(row = 1, column = 1, padx = 10, pady = 5)
-lblMascota.grid(row = 3, column = 0, padx = 10, pady = 5)
-    #----# Botones
-chkPerro.grid(row = 2, column = 0, padx = 10, pady = 5)
-chkGato.grid(row = 2, column = 1, padx = 10, pady = 5)
-btnGeneral.grid(row = 3, column = 0, sticky = "WE", padx = 10, pady = 5)
-btnSalir.grid(row = 3, column = 1, sticky = "WE", padx = 10, pady = 5)
+intro.grid(row = 0, column = 0, columnspan = 2)
+txtDNI.grid(row = 1, column = 0)
+entryDNI.grid(row = 1, column = 1)
+txtTramite.grid(row = 2, column = 0, columnspan = 2)
+rdbtnReclamo.grid(row = 3, column = 0, columnspan = 2)
+rdbtnAltaBaja.grid(row = 4, column = 0, columnspan = 2)
+rdbtnConsulta.grid(row = 5,column = 0, columnspan = 2)
+btnConfirma.grid(row = 6, column = 0, sticky = "WE")
+btnSalir.grid(row = 6, column = 1, sticky = "WE")
 
-        #~~~~~~~~~~~~~//Cierre del bucle\\~~~~~~~~~~~~~#
+        #~~~~~~~~~~~~~//Cierre total\\~~~~~~~~~~~~~#
 
 mainroot.mainloop()
+turnosA.close()
+turnosB.close()
+turnosC.close()
