@@ -114,7 +114,7 @@ rdbtnConsulta.grid(row = 5,column = 0, columnspan = 2)
 btnConfirma.grid(row = 6, column = 0, sticky = "WE")
 btnSalir.grid(row = 6, column = 1, sticky = "WE")
 
-        #~~~~~~~~~~~~~//Cierre total\\~~~~~~~~~~~~~#
+        #~~~~~~~~~~~~~//Cierre\\~~~~~~~~~~~~~#
 
 mainroot.mainloop()
 turnosA.close()
