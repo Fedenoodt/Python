@@ -25,6 +25,11 @@
 
         #///////////////Ejercicio 6\\\\\\\\\\\\\\\#
 
+        #~~~~~~~~~~~~~//Llamadas\\~~~~~~~~~~~~~#
+
+import tkinter as tkr
+from tkinter import IntVar, StringVar, messagebox
+
         #~~~~~~~~~~~~~//Funciones\\~~~~~~~~~~~~~#
 
 turnosA = open("turnosA.txt", "a")
@@ -59,23 +64,12 @@ def versionador():
         turnoC = c + '-' + str(contadorC)
         turnosC.writelines(turnoC + ";" + str(dni))
 
-def muestra():
-    ruta = tramite.get()
-    if str(ruta) == "reclamo":
-        pass
-    elif str(ruta) == "altaBaja":
-        pass
-    elif str(ruta) == "consulta":
-        pass
 def salir():
     opcion = messagebox.askokcancel('¡Atención!', '¿Confirma que desea salir?')
     if opcion:
         exit()
 
-        #~~~~~~~~~~~~~//Llamadas\\~~~~~~~~~~~~~#
-
-import tkinter as tkr
-from tkinter import IntVar, StringVar, messagebox
+        #~~~~~~~~~~~~~//Inicialización\\~~~~~~~~~~~~~#
 
 mainroot = tkr.Tk()
 
@@ -87,14 +81,14 @@ intro = tkr.Label(mainroot, text = "Por favor. Ingrese el tipo de trámite para 
         #~~~~~~~~~~~~~//Zona de ingresos\\~~~~~~~~~~~~~#
 
 txtDNI = tkr.Label(mainroot, text = "DNI:")
-dni = IntVar()
-entryDNI = tkr.Entry(mainroot, variable = dni, command = versionador)
+dni = StringVar()
+entryDNI = tkr.Entry(mainroot, textvariable = dni, command = versionador)
 txtTramite = tkr.Label(mainroot, text = "Trámite")
 tramite = StringVar()
-rdbtnReclamo = tkr.Radiobutton(mainroot, text = "Reclamo", variable = tramite, value = "reclamo", command = versionador)
-rdbtnAltaBaja = tkr.Radiobutton(mainroot, text = "Alta / Baja", variable = tramite, value = "altaBaja", command = versionador)
-rdbtnConsulta = tkr.Radiobutton(mainroot, text = "Consulta", variable = tramite, value = "consulta", command = versionador)
-btnConfirma = tkr.Button(mainroot, text = "Confirmar", command = muestra)
+rdbtnReclamo = tkr.Radiobutton(mainroot, text = "Reclamo", textvariable = tramite, value = "reclamo")
+rdbtnAltaBaja = tkr.Radiobutton(mainroot, text = "Alta / Baja", textvariable = tramite, value = "altaBaja")
+rdbtnConsulta = tkr.Radiobutton(mainroot, text = "Consulta", textvariable = tramite, value = "consulta")
+btnConfirma = tkr.Button(mainroot, text = "Confirmar", command = versionador)
 btnSalir = tkr.Button(mainroot, text = "Salir", command = salir)
 
 
