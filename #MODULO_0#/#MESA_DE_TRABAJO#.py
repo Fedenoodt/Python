@@ -52,11 +52,11 @@ desarrollador2Column = tkr.Label(mainQuery, text = "desarrollador2")
 desarrollador3Column = tkr.Label(mainQuery, text = "desarrollador3")
 
 
-intro.grid(row = 0, column = 0, columnspan = 4, sticky = "WE", padx = 250)
-nombresColumn.grid(row = 1, column = 0, sticky = "WE", padx = 15)
-desarrollador1Column.grid(row = 1, column = 1, sticky = "WE", padx = 150)
-desarrollador2Column.grid(row = 1, column = 2, sticky = "WE", padx = 150)
-desarrollador3Column.grid(row = 1, column = 3, sticky = "WE", padx = 150)
+intro.grid(row = 0, column = 0, columnspan = 4, sticky = "WE", pady = 25)
+nombresColumn.grid(row = 1, column = 0, sticky = "WE", pady = 15)
+desarrollador1Column.grid(row = 1, column = 1, sticky = "WE", pady = 15)
+desarrollador2Column.grid(row = 1, column = 2, sticky = "WE", pady = 15)
+desarrollador3Column.grid(row = 1, column = 3, sticky = "WE", pady = 15)
 
 base1 = sqlite3.connect('/home/fedenoodt/Documentos/BHSIAI/Protocolo 6/GitHub/Python/#MODULO_0#/Articulos/juegosPS2.db')
 cursor = base1.cursor()
@@ -69,9 +69,9 @@ for i in codigos:
         nombres.append(str(i))
         """
 insercion(nombres, "SELECT JUEGO.NOMBRE FROM JUEGO ORDER BY NOMBRE ASC;", 0)
-insercion(desarrollador1, "SELECT JUEGO.NOMBRE,DESARROLLADOR.NOMBRE FROM JUEGO,DESARROLLADOR WHERE juego.ID_DESARROLLADOR=DESARROLLADOR.ID_DESARROLLADOR;", 1)
-insercion(desarrollador2, "SELECT JUEGO.NOMBRE,DESARROLLADOR.NOMBRE FROM JUEGO,DESARROLLADOR WHERE juego.ID_DESARROLLADOR_2=DESARROLLADOR.ID_DESARROLLADOR;", 2)
-insercion(desarrollador3, "SELECT JUEGO.NOMBRE,DESARROLLADOR.NOMBRE FROM JUEGO,DESARROLLADOR WHERE juego.ID_DESARROLLADOR_3=DESARROLLADOR.ID_DESARROLLADOR;", 3)
+insercion(desarrollador1, "SELECT JUEGO.NOMBRE,DESARROLLADOR.NOMBRE FROM JUEGO,DESARROLLADOR WHERE juego.ID_DESARROLLADOR=DESARROLLADOR.ID_DESARROLLADOR ORDER BY JUEGO.NOMBRE ASC;", 1)
+insercion(desarrollador2, "SELECT JUEGO.NOMBRE,DESARROLLADOR.NOMBRE FROM JUEGO,DESARROLLADOR WHERE juego.ID_DESARROLLADOR_2=DESARROLLADOR.ID_DESARROLLADOR ORDER BY JUEGO.NOMBRE ASC;", 2)
+insercion(desarrollador3, "SELECT JUEGO.NOMBRE,DESARROLLADOR.NOMBRE FROM JUEGO,DESARROLLADOR WHERE juego.ID_DESARROLLADOR_3=DESARROLLADOR.ID_DESARROLLADOR ORDER BY JUEGO.NOMBRE ASC;", 3)
 
 
 mainQuery.mainloop()
